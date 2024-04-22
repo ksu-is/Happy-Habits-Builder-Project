@@ -6,7 +6,7 @@
 - [x] Create and commit a README.md
 - [x] Create a projectroadmap.md
 - [ ] Explore and clone related repository in Python
-- [ ] Submit Sprint 1 Review and Log Quiz (due 4/8)
+- [x] Submit Sprint 1 Review and Log Quiz (due 4/8)
 
 
 # Sprint 2
