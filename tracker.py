@@ -4,11 +4,11 @@ def track_habits():
     print("\nWelcome to Happy Habits Tracker!")
     
     while True:
-        print("\n1. Add habit")
-        print("2. Remove habit")
+        print("\n1. Add new habit")
+        print("2. Remove old habit")
         print("3. Mark habit as completed")
         print("4. Mark habit as missed.")
-        print("5. View habits")
+        print("5. View habits tracking.")
         print("6. Exit")
         
         choice = input("Enter your choice: ")
@@ -64,7 +64,7 @@ def track_habits():
                     print(f"- {habit}: {status}")
                 
         elif choice == '6':
-            print("Exiting. Keep up the good work!")
+            print("Exiting program. Keep up the good work!")
             break
             
         else:
