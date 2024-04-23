@@ -1,5 +1,6 @@
 def track_habits():
     habits = {}
+    habit_history = {}
 
     print("\nWelcome to Happy Habits Tracker!")
     
@@ -9,7 +10,8 @@ def track_habits():
         print("3. Mark habit as completed")
         print("4. Mark habit as missed.")
         print("5. View habits tracking.")
-        print("6. Exit")
+        print("6. View Habit Progress.")
+        print("7. Exit")
         
         choice = input("Enter your choice: ")
         
@@ -62,8 +64,19 @@ def track_habits():
                 for habit, completed in habits.items():
                     status = "completed" if completed else "not completed"
                     print(f"- {habit}: {status}")
-                
+
         elif choice == '6':
+            if not habit_history:
+                print("No habits tracked yet.")
+            else:
+                habit = input("Enter the habit you want to see consistency for: ")
+                if habit in habit_history:
+                    consistency = sum(habit_history[habit]) / len(habit_history[habit]) * 100
+                    print(f"Consistency for '{habit}': {consistency:.2f}%")
+                else:
+                    print("Habit not found. Please enter a valid habit.")
+                
+        elif choice == '7':
             print("Exiting program. Keep up the good work!")
             break
             
