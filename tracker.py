@@ -39,6 +39,18 @@ def track_habits():
                 habit_to_mark = list(habits.keys())[index - 1]
                 habits[habit_to_mark] = True
                 print(f"{habit_to_mark} marked as completed. Way to go!")
+
+        elif choice == '4':
+            if not habits:
+                print("You have no habits to mark as missed.")
+            else:
+                print("Your habits:")
+                for i, habit in enumerate(habits.keys(), start=1):
+                    print(f"{i}. {habit}")
+                index = int(input("Enter the index of the habit you want to mark as missed: "))
+                habit_to_mark = list(habits.keys())[index - 1]
+                habits[habit_to_mark] = False
+                print(f"{habit_to_mark} marked as missed. Don't give up!")
                 
         elif choice == '5':
             if not habits:
