@@ -1,3 +1,6 @@
+#this code is in progress. 
+#this program is intended to track and view habit progress for users
+
 def track_habits():
     habits = {}
     habit_history = {}
@@ -67,9 +70,9 @@ def track_habits():
 
         elif choice == '6':
             if not habit_history:
-                print("No habits tracked yet.")
+                print("\nNo habits tracked yet.")
             else:
-                habit = input("Enter the habit you want to see consistency for: ")
+                habit = input("Enter the habit you want to see your progress for: ")
                 if habit in habit_history:
                     consistency = sum(habit_history[habit]) / len(habit_history[habit]) * 100
                     print(f"Consistency for '{habit}': {consistency:.2f}%")
