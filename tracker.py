@@ -4,8 +4,10 @@ def track_habits():
     while True:
         print("\n1. Add habit")
         print("2. Remove habit")
-        print("3. View habits")
-        print("4. Exit")
+        print("3. Mark habit as completed")
+        print("4. Mark habit as missed.")
+        print("5. View habits")
+        print("6. Exit")
         
         choice = input("Enter your choice: ")
         
@@ -26,7 +28,7 @@ def track_habits():
                 del habits[habit_to_remove]
                 print(f"{habit_to_remove} removed from your habits.")
                 
-        elif choice == '3':
+        elif choice == '5':
             if not habits:
                 print("You have no habits to view.")
             else:
@@ -35,8 +37,8 @@ def track_habits():
                     status = "completed" if completed else "not completed"
                     print(f"- {habit}: {status}")
                 
-        elif choice == '4':
-            print("Exiting...")
+        elif choice == '6':
+            print("Exiting. Keep up the good work!")
             break
             
         else:
