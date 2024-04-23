@@ -1,5 +1,7 @@
 def track_habits():
     habits = {}
+
+    print("\nWelcome to Happy Habits Tracker!")
     
     while True:
         print("\n1. Add habit")
@@ -14,13 +16,13 @@ def track_habits():
         if choice == '1':
             habit = input("Enter the habit you want to add: ")
             habits[habit] = False
-            print(f"{habit} added to your habits.")
+            print(f"\n{habit} added to your habits.")
             
         elif choice == '2':
             if not habits:
                 print("You have no habits to remove.")
             else:
-                print("Your habits:")
+                print("/nYour habits:")
                 for i, habit in enumerate(habits.keys(), start=1):
                     print(f"{i}. {habit}")
                 index = int(input("Enter the index of the habit you want to remove: "))
@@ -32,7 +34,7 @@ def track_habits():
             if not habits:
                 print("You have no habits to mark as completed.")
             else:
-                print("Your habits:")
+                print("\nYour habits:")
                 for i, habit in enumerate(habits.keys(), start=1):
                     print(f"{i}. {habit}")
                 index = int(input("Enter the index of the habit you want to mark as completed: "))
@@ -42,9 +44,9 @@ def track_habits():
 
         elif choice == '4':
             if not habits:
-                print("You have no habits to mark as missed.")
+                print("\nYou have no habits to mark as missed.")
             else:
-                print("Your habits:")
+                print("\nYour habits:")
                 for i, habit in enumerate(habits.keys(), start=1):
                     print(f"{i}. {habit}")
                 index = int(input("Enter the index of the habit you want to mark as missed: "))
@@ -56,7 +58,7 @@ def track_habits():
             if not habits:
                 print("You have no habits to view.")
             else:
-                print("Your habits:")
+                print("\nYour habits:")
                 for habit, completed in habits.items():
                     status = "completed" if completed else "not completed"
                     print(f"- {habit}: {status}")
