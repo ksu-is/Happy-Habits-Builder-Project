@@ -27,6 +27,18 @@ def track_habits():
                 habit_to_remove = list(habits.keys())[index - 1]
                 del habits[habit_to_remove]
                 print(f"{habit_to_remove} removed from your habits.")
+
+        elif choice == '3':
+            if not habits:
+                print("You have no habits to mark as completed.")
+            else:
+                print("Your habits:")
+                for i, habit in enumerate(habits.keys(), start=1):
+                    print(f"{i}. {habit}")
+                index = int(input("Enter the index of the habit you want to mark as completed: "))
+                habit_to_mark = list(habits.keys())[index - 1]
+                habits[habit_to_mark] = True
+                print(f"{habit_to_mark} marked as completed. Way to go!")
                 
         elif choice == '5':
             if not habits:
