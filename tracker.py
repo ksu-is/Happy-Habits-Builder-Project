@@ -1,9 +1,8 @@
-#this code is in progress. 
+#this code is for the IS 3020 project
 #this program is intended to track and view habit progress for users
 
 def track_habits():
     habits = {}
-    habit_history = {}
 
     print("\nWelcome to Happy Habits Builder!\nLet's get back to tracking. Select from the choices below.")
     
@@ -57,10 +56,14 @@ def track_habits():
                 for i, habit in enumerate(habits.keys(), start=1):
                     print(f"{i}. {habit}")
                 index = int(input("Enter the index of the habit you want to mark as missed: "))
-                habit_to_mark = list(habits.keys())[index - 1]
-                habits[habit_to_mark]['completed'] = False
-                habits[habit_to_mark]['progress'].append(False)
-                print(f"'{habit_to_mark}' marked as missed. Don't give up!")
+                habit_list = list(habits.keys())
+                if 1 <= index <= len(habit_list):
+                    habit_to_mark = habit_list[index - 1]
+                    habits[habit_to_mark]['completed'] = False
+                    habits[habit_to_mark]['progress'].append(False)
+                    print(f"'{habit_to_mark}' marked as missed. Don't give up!")
+                else:
+                    print("Invalid index. Please enter a valid index.")
                 
         elif choice == '5':
             if not habits:
@@ -75,19 +78,25 @@ def track_habits():
             if not habits:
                 print("\nYou have no habits to track progress for.")
             else:
-                habit_name = input("Enter the habit you want to see your progress for: ")
-                if habit_name in habits:
-                    frequency = habits[habit_name]['frequency']
-                    progress = habits[habit_name]['progress']
+                print("\nSelect the habit you want to see progress for:")
+                for i, habit_name in enumerate(sorted(habits.keys()), start=1):
+                    print(f"{i}. {habit_name}")
+                index = int(input("Enter the index of the habit: "))
+                habit_list = sorted(habits.keys())
+                if 1 <= index <= len(habit_list):
+                    selected_habit = habit_list[index - 1]
+                    frequency = habits[selected_habit]['frequency']
+                    progress = habits[selected_habit]['progress']
                     completed_count = sum(progress)
                     total_count = len(progress)
                     if total_count == 0:
                         consistency = 0
                     else:
                         consistency = (completed_count / total_count) * 100
-                    print(f"You completed '{habit_name}' {completed_count} times out of {total_count} attempts ({consistency:.2f}% consistency). Frequency: {frequency}")
+                    print(f"You completed '{selected_habit}' {completed_count} times out of {total_count} attempts ({consistency:.2f}% consistency). Frequency: {frequency}")
                 else:
-                    print("Habit not found. Please enter a valid habit.")
+                    print("Invalid index. Please enter a valid index.")
+
                 
         elif choice == '7':
             print("Exiting program. Keep up the good work!")
