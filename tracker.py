@@ -20,14 +20,15 @@ def track_habits():
         
         if choice == '1':
             habit = input("Enter the habit you want to add: ")
-            habits[habit] = False
-            print(f"\n{habit} added to your habits.")
+            frequency = input("Enter how often you'd like to complete this habit (e.g., daily, weekly, monthly): ")
+            habits[habit] = {'completed': False, 'frequency': frequency, 'progress': []}
+            print(f"\n'{habit}' added to your habits with a frequency of {frequency}.")
             
         elif choice == '2':
             if not habits:
                 print("You have no habits to remove.")
             else:
-                print("/nYour habits:")
+                print("\nYour habits:")
                 for i, habit in enumerate(habits.keys(), start=1):
                     print(f"{i}. {habit}")
                 index = int(input("Enter the index of the habit you want to remove: "))
@@ -44,8 +45,9 @@ def track_habits():
                     print(f"{i}. {habit}")
                 index = int(input("Enter the index of the habit you want to mark as completed: "))
                 habit_to_mark = list(habits.keys())[index - 1]
-                habits[habit_to_mark] = True
-                print(f"{habit_to_mark} marked as completed. Way to go!")
+                habits[habit_to_mark]['completed'] = True
+                habits[habit_to_mark]['progress'].append(True)
+                print(f"'{habit_to_mark}' marked as completed. Way to go!")
 
         elif choice == '4':
             if not habits:
@@ -56,26 +58,34 @@ def track_habits():
                     print(f"{i}. {habit}")
                 index = int(input("Enter the index of the habit you want to mark as missed: "))
                 habit_to_mark = list(habits.keys())[index - 1]
-                habits[habit_to_mark] = False
-                print(f"{habit_to_mark} marked as missed. Don't give up!")
+                habits[habit_to_mark]['completed'] = False
+                habits[habit_to_mark]['progress'].append(False)
+                print(f"'{habit_to_mark}' marked as missed. Don't give up!")
                 
         elif choice == '5':
             if not habits:
                 print("You have no habits to view.")
             else:
                 print("\nYour habits:")
-                for habit, completed in habits.items():
-                    status = "completed" if completed else "not completed"
-                    print(f"- {habit}: {status}")
+                for habit_name, habit_info in habits.items():
+                    status = "completed" if habit_info['completed'] else "not completed"
+                    print(f"- '{habit_name}': {status}, Frequency: {habit_info['frequency']}")
 
         elif choice == '6':
-            if not habit_history:
-                print("\nNo habits tracked yet.")
+            if not habits:
+                print("\nYou have no habits to track progress for.")
             else:
-                habit = input("Enter the habit you want to see your progress for: ")
-                if habit in habit_history:
-                    consistency = sum(habit_history[habit]) / len(habit_history[habit]) * 100
-                    print(f"Consistency for '{habit}': {consistency:.2f}%")
+                habit_name = input("Enter the habit you want to see your progress for: ")
+                if habit_name in habits:
+                    frequency = habits[habit_name]['frequency']
+                    progress = habits[habit_name]['progress']
+                    completed_count = sum(progress)
+                    total_count = len(progress)
+                    if total_count == 0:
+                        consistency = 0
+                    else:
+                        consistency = (completed_count / total_count) * 100
+                    print(f"You completed '{habit_name}' {completed_count} times out of {total_count} attempts ({consistency:.2f}% consistency). Frequency: {frequency}")
                 else:
                     print("Habit not found. Please enter a valid habit.")
                 
