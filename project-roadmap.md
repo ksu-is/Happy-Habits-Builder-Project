@@ -18,6 +18,19 @@
   - [x] Change 4
   - [x] Change 6
 - [x] Progress tracked on Project Roadmap
-- [ ] Submitted Sprint 2 Review and Log Quiz (due 4/22)
+- [x] Submitted Sprint 2 Review and Log Quiz (due 4/22)
 
 # Sprint 3
+-[x]Continue coding and refining and testing code
+-[x]Create one PowerPoint slide introducing your project
+  - [x] List your project team members
+  - [x] Show the title of your project
+  - [x] Show a tag line that introduces the main concept of what it does/will do
+  - [x] Show 1-2 screenshots or pictures demonstrating the idea or parts
+-[x] Uploaded splash screen copy to Github repository
+-[x]Sumbitted Sprint 3 PPT Splash screen (due 4/26)
+
+# Presentation
+-[x]Schedule meeting in teams to present
+-[x] Complete PowerPoint
+-[] Present presentation
