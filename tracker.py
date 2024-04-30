@@ -5,7 +5,7 @@ def track_habits():
     habits = {}
     habit_history = {}
 
-    print("\nWelcome to Happy Habits Tracker!")
+    print("\nWelcome to Happy Habits Builder!")
     
     while True:
         print("\n1. Add new habit")
